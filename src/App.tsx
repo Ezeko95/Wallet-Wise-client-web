@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./views/Home/Home";
-import Landing from "./views/Landing/Landing";
+import { Landing } from "./views/Landing/Landing";
 
 const App = () => {
   return (
