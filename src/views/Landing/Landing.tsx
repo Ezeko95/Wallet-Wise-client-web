@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Landing.css";
+
 export const Landing: React.FC = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -24,7 +26,6 @@ export const Landing: React.FC = () => {
       setShowAlert(true);
     }
   };
-  
    
   return (
     <div>

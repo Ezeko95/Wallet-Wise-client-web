@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./Home.css"
 import userImage from "../../assets/user-33638_640.webp"
+import { Logout } from "../../components/Logout/Logout";
 
 export const Home = () => {
     const [users, setUsers] = useState<any[]>([]);
@@ -41,6 +42,7 @@ export const Home = () => {
     
       return (
         <div className="user-container">
+          <Logout/>
           <h1>USERS</h1>
           {users.map((user: any) => (
             <div key={user.id} className="user-row">
