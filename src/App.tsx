@@ -1,13 +1,15 @@
-import LoginButton from "./components/Login/Login";
-import LogoutButton from "./components/Logout/Logout";
-import Profile from "./components/ProfileUser/ProfileUser";
+import { Routes, Route } from "react-router-dom";
+import Home from "./views/Home/Home";
+import Landing from "./views/Landing/Landing";
 
 const App = () => {
   return (
     <div>
-      <LoginButton />
-      <LogoutButton />
-      <Profile/>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+
+        <Route path="/home" element={<Home />} />
+      </Routes>
     </div>
   );
 };
