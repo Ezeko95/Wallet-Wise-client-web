@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Landing.css";
-
 export const Landing: React.FC = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -11,7 +10,14 @@ export const Landing: React.FC = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+
+    if (name === "email" && showAlert && value === "") {
+      setShowAlert(false);
+    } else if (name === "password" && showAlert && value === "") {
+      setShowAlert(false);
+    }
   };
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,11 +32,11 @@ export const Landing: React.FC = () => {
       setShowAlert(true);
     }
   };
-   
+
   return (
-    <div>
+    <div className="login-container">
       <form onSubmit={handleFormSubmit}>
-        <div>
+        <div className="container">
           <label>Email: </label>
           <input
             type="text"
@@ -39,7 +45,7 @@ export const Landing: React.FC = () => {
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="container">
           <label>Password: </label>
           <input
             type="password"
@@ -48,9 +54,9 @@ export const Landing: React.FC = () => {
             onChange={handleInputChange}
           />
         </div>
+        {showAlert && <p>Incorrect credentials. Please try again.</p>}
         <button type="submit">Login</button>
       </form>
-      {showAlert && <p>Incorrect credentials. Please try again.</p>}
     </div>
   );
 };
