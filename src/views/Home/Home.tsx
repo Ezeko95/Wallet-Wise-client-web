@@ -13,7 +13,7 @@ export const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://wisewalletfinal.onrender.com/user/"
+          "/user/"
         );
         setUsers(response.data);
       } catch (error) {
@@ -42,7 +42,7 @@ export const Home = () => {
 
       setUsers(updatedUsers);
 
-      await axios.put(`https://wisewalletfinal.onrender.com/user/${userId}`);
+      await axios.put(`/user/${userId}`);
       console.log("Premium status updated successfully!");
     } catch (error) {
       console.error("Error updating premium status:", error);
@@ -51,18 +51,18 @@ export const Home = () => {
 
   return (
     <div className="user-container">
-      <WakeUpNeo text={"Wake up, Neo..."}></WakeUpNeo>
-      <Logout />
       {showGif ? (
         <img
-          src="https://i.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.webp"
-          alt="GIF"
-          height="200px"
-          width="200px"
-          
+        src="https://i.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.webp"
+        alt="GIF"
+        height="200px"
+        width="200px"
+        
         />
-      ) : (
-        <>
+        ) : (
+          <>
+          <WakeUpNeo text={"Wake up, Neo..."}></WakeUpNeo>
+          <Logout />
           <h1>USERS</h1>
           {users.map((user: any) => (
             <div key={user.id} className="user-row">
