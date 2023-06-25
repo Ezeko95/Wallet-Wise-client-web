@@ -1,0 +1,14 @@
+.fade-out-text {
+  transition: opacity 1s;
+  font-size: 30px;
+  color: green;
+  padding-bottom: 20px;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}

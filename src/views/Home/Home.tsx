@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import "./Home.css"
 import userImage from "../../assets/user-33638_640.webp"
 import { Logout } from "../../components/Logout/Logout";
+import WakeUpNeo from "../../components/Wake up, Neo/WakeUpNeo";
 
 export const Home = () => {
     const [users, setUsers] = useState<any[]>([]);
-    // const [userStatus, setUserStatus] = 
 
     useEffect(() => {
       const fetchData = async () => {
@@ -42,6 +42,7 @@ export const Home = () => {
     
       return (
         <div className="user-container">
+          <WakeUpNeo text={"Wake up, Neo..."}></WakeUpNeo>
           <Logout/>
           <h1>USERS</h1>
           {users.map((user: any) => (

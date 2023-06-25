@@ -37,7 +37,7 @@ export const Landing: React.FC = () => {
     <div className="login-container">
       <form onSubmit={handleFormSubmit}>
         <div className="container">
-          <label>Email: </label>
+          <label>User: </label>
           <input
             type="text"
             value={form.email}
@@ -54,7 +54,7 @@ export const Landing: React.FC = () => {
             onChange={handleInputChange}
           />
         </div>
-        {showAlert && <p>Incorrect credentials. Please try again.</p>}
+        {showAlert && <p>You are not Neo, get out!</p>}
         <button type="submit">Login</button>
       </form>
     </div>
