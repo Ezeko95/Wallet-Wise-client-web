@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  justify-content: flex-start;
+  min-width: 320px;
+  min-height: 100vh;
 }
 #root {
   display: flex;
@@ -17,13 +18,15 @@
   flex-direction: row;
   padding: 10px;
   margin-bottom: 10px;
-  width: 100%;
+  width: 200vh;
   border-radius: 10px;
   align-items: center;
+  margin-top: 10px;
   
 }
+
 .user-row h3 {
-    margin-right: 100px;
+    margin-right: 150px;
 }
 .user-row button {
   margin-left: auto;
@@ -37,3 +40,14 @@
   width: 100%;
   height: 100%;
 }
+.headers {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.headers h1 {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+

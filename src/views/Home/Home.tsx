@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import "./Home.css";
 import userImage from "../../assets/user-33638_640.webp";
 import { Logout } from "../../components/Logout/Logout";
-import WakeUpNeo from "../../components/Wake up, Neo/WakeUpNeo";
 
 export const Home = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -13,24 +12,25 @@ export const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "/user/"
+          "https://wallet-wise.onrender.com/user"
         );
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
       }
     };
-
+    
     const timeout = setTimeout(() => {
       setShowGif(false);
       fetchData();
     }, 5000);
-
+    
     return () => {
       clearTimeout(timeout);
     };
   }, []);
-
+  
+  console.log(users)
   const togglePremium = async (userId: number) => {
     try {
       const updatedUsers = users.map((user: any) => {
@@ -42,7 +42,7 @@ export const Home = () => {
 
       setUsers(updatedUsers);
 
-      await axios.put(`/user/${userId}`);
+      await axios.put(`https://wallet-wise.onrender.com/user/${userId}`);
       console.log("Premium status updated successfully!");
     } catch (error) {
       console.error("Error updating premium status:", error);
@@ -61,9 +61,10 @@ export const Home = () => {
         />
         ) : (
           <>
-          <WakeUpNeo text={"Wake up, Neo..."}></WakeUpNeo>
+          <div className="headers">
           <Logout />
           <h1>USERS</h1>
+          </div>
           {users.map((user: any) => (
             <div key={user.id} className="user-row">
               <img src={userImage} alt="user" height="40px" width="40px" />
