@@ -54,7 +54,7 @@ export const Landing: React.FC = () => {
             onChange={handleInputChange}
           />
         </div>
-        {showAlert && <p>You are not Neo, get out!</p>}
+        {showAlert && <p>Wrong credentials! Try again...</p>}
         <button type="submit">Login</button>
       </form>
     </div>
