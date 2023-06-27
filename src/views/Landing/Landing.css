@@ -1,18 +1,32 @@
-.login-container{
-    display: flex;
-
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 300px;
+  margin-left: 30%;
 }
 
 .form-container {
-    display: flex;
-
+  display: flex;
+}
+.secret-code {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+  opacity: 0;
+  animation: secret-code-animation 7s infinite;
 }
 
-.form-container label{
-
-    margin-right: 10px ;
+.lock {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
-input[type=text], input[type=password] {
+.form-container label {
+  margin-right: 10px;
+}
+input[type="text"],
+input[type="password"] {
   width: 100%;
   padding: 8px 15px;
   margin: 8px 0;
@@ -21,6 +35,16 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-.login-container button{
-    margin-top: 10px
+.login-container button {
+  margin-top: 10px;
 }
+
+
+@keyframes secret-code-animation {
+    0%, 100% {
+      opacity: 0.10;
+    }
+    50% {
+      opacity: 0.75;
+    }
+  }

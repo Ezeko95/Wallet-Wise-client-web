@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./views/Home/Home";
 import { Landing } from "./views/Landing/Landing";
+import Detail from "./views/Detail/detail";
 
 const App = () => {
   return (
@@ -9,6 +10,10 @@ const App = () => {
         <Route path="/" element={<Landing />} />
 
         <Route path="/home" element={<Home />} />
+
+        <Route path="/detail/:id" element={<Detail/>} />
+
+        <Route path="/subscription" />
       </Routes>
     </div>
   );

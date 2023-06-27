@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Landing.css";
+import lock from "../../assets/pngkit_padlock-icon-png_3331142.png";
+
 export const Landing: React.FC = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -34,29 +36,38 @@ export const Landing: React.FC = () => {
   };
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleFormSubmit}>
-        <div className="container">
-          <label>User: </label>
-          <input
-            type="text"
-            value={form.email}
-            name="email"
-            onChange={handleInputChange}
-          />
+    <>
+      <div className="secret-code">
+          <h1>"I solemnly swear that I am up to no good."</h1>
+      </div>
+
+      <div className="login-container">
+        <div className="lock">
+          <img src={lock} alt="lock" height="70px"></img>
         </div>
-        <div className="container">
-          <label>Password: </label>
-          <input
-            type="password"
-            value={form.password}
-            name="password"
-            onChange={handleInputChange}
-          />
-        </div>
-        {showAlert && <p>Wrong credentials! Try again...</p>}
-        <button type="submit">Login</button>
-      </form>
-    </div>
+        <form onSubmit={handleFormSubmit}>
+          <div className="container">
+            <label>User: </label>
+            <input
+              type="text"
+              value={form.email}
+              name="email"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="container">
+            <label>Password: </label>
+            <input
+              type="password"
+              value={form.password}
+              name="password"
+              onChange={handleInputChange}
+            />
+          </div>
+          {showAlert && <p>Wrong credentials! Try again...</p>}
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </>
   );
 };

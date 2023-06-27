@@ -1,0 +1,26 @@
+.users {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    width: 1300px;
+    background-color: grey;
+    padding: 8px;
+    border-radius: 10px;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+  }
+  
+.user-info p {
+    max-width: 500px;
+}
