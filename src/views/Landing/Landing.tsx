@@ -22,11 +22,14 @@ export const Landing: React.FC = () => {
       setShowAlert(false);
     }
   };
-
+  
   const login = useGoogleLogin({
-    onSuccess: (codeResponse) => console.log(codeResponse),
+    onSuccess: () => {
+      navigate("/home");
+    },
     flow: "auth-code",
   });
+ 
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

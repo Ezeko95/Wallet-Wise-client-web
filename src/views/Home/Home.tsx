@@ -1,7 +1,7 @@
 import Pagination from "../../components/Pagination/pagination";
 import Users from "../../components/Users/users";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { RootState } from "../../redux/store/index";
 import { fetchUsers } from "../../redux/actions/index";
 import { useNavigate } from "react-router-dom";
@@ -56,29 +56,23 @@ const handlePageChange = (pageNumber: number) => {
 
   return (
     <div className="home-container">
-      <div className="logout">
-        <button onClick={handleLogout}>Logout</button>
-      </div>
-      <div className="user-container">
-        <div className="search-bar"> 
+      <div className="navbar">
           <input
             type="text"
             value={searchQuery}
             onChange={handleSearchInputChange}
             placeholder="Search by name..."
-          />
-        </div>
+            className="search-input"
+            />
+        <button onClick={handleLogout}>Logout</button>
+            </div>
+      <div className="user-container">
         <Pagination
           currentPage={currentPage}
           totalPages={Math.ceil(filteredUsers.length / itemsPerPage)}
           onPageChange={handlePageChange}
         />
         <Users users={paginatedUsers} />
-        <Pagination
-          currentPage={currentPage}
-          totalPages={Math.ceil(filteredUsers.length / itemsPerPage)}
-          onPageChange={handlePageChange}
-        />
       </div>
     </div>
   );

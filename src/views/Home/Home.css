@@ -16,15 +16,24 @@
   align-items: center;
 }
 
-.logout {
+.navbar {
+  display: flex;
+  flex-direction: row;
   align-self: flex-end;
   margin-top: 10px;
   margin-right: 10px;
+  gap: 27rem;
+}
+.search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 .user-container {
   
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .search-bar {
  margin-left: 400px;
