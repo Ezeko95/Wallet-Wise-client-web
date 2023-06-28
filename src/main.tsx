@@ -6,8 +6,8 @@ import { Provider } from "react-redux";
 import {store} from "./redux/store/index.ts";
 import axios from "axios";
 
-// axios.defaults.baseURL = 'http://localhost:3001/'
-axios.defaults.baseURL = 'https://wallet-wise.onrender.com/'
+axios.defaults.baseURL = 'http://localhost:3001/'
+// axios.defaults.baseURL = 'https://wallet-wise.onrender.com/'
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <Provider store={store}>

@@ -14,6 +14,7 @@ const App = () => {
         <Route path="/detail/:id" element={<Detail/>} />
 
         <Route path="/subscription" />
+        
       </Routes>
     </div>
   );

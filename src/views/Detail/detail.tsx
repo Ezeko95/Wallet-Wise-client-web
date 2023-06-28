@@ -12,7 +12,7 @@ const Detail = () => {
   useEffect(() => {
     const fetchUserDetail = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/user/${id}`);
+        const response = await axios.get(`user/${id}`);
         const userData = response.data;
         setUsers(userData);
       } catch (error) {

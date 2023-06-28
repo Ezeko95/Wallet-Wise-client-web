@@ -1,39 +1,24 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../../redux/actions/index";
-import { RootState } from "../../redux/store/index";
 import profilePicture from "../../assets/user-33638_640.webp";
-import axios from "axios";
 import "./users.css";
+import axios from "axios";
+import { User } from "../../redux/actions";
 
-const Users = () => {
-  const dispatch = useDispatch();
+interface UsersProps {
+  users: User[];
+}
+
+const Users = ({ users }: UsersProps) => {
   const navigate = useNavigate();
-  const users = useSelector((state: RootState) => state.users.users);
-  const loading = useSelector((state: RootState) => state.users.loading);
-  const error = useSelector((state: RootState) => state.users.error);
 
-  useEffect(() => {
-    dispatch(fetchUsers() as any);
-  }, []);
-  console.log(users)
-  if (loading) {    
-    return <p>Loading...</p>;
+const togglePremium = async (userId: number) => {
+  try {
+    await axios.put(`user/${userId}`, {});
+  } catch (error: any) {
+    console.log(error.message);
   }
+};
 
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-  const togglePremium = async (userId: number) => {
-    
-    try {
-      await axios.put(`user/${userId}`, {});
-      dispatch(fetchUsers() as any);
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  };
   const handleUserClick = (userId: number) => {
     navigate(`/detail/${userId}`);
   };
