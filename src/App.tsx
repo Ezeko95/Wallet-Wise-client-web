@@ -1,7 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./views/Home/Home";
-import { Landing } from "./views/Landing/Landing";
-import Detail from "./views/Detail/detail";
+import { Landing, Home, Detail, Subscription } from "./views";
 
 const App = () => {
   return (
@@ -11,10 +9,9 @@ const App = () => {
 
         <Route path="/home" element={<Home />} />
 
-        <Route path="/detail/:id" element={<Detail/>} />
+        <Route path="/detail/:id" element={<Detail />} />
 
-        <Route path="/subscription" />
-        
+        <Route path="/subscription" element={<Subscription />} />
       </Routes>
     </div>
   );

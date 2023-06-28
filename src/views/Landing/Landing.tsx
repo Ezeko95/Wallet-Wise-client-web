@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Landing.css";
 import lock from "../../assets/pngkit_padlock-icon-png_3331142.png";
+import { useGoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import "./Landing.css";
 
 export const Landing: React.FC = () => {
   const navigate = useNavigate();
@@ -22,6 +23,11 @@ export const Landing: React.FC = () => {
     }
   };
 
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => console.log(codeResponse),
+    flow: "auth-code",
+  });
+
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -38,7 +44,7 @@ export const Landing: React.FC = () => {
   return (
     <>
       <div className="secret-code">
-          <h1>"I solemnly swear that I am up to no good."</h1>
+        <h1>"I solemnly swear that I am up to no good."</h1>
       </div>
 
       <div className="login-container">
@@ -63,6 +69,7 @@ export const Landing: React.FC = () => {
               name="password"
               onChange={handleInputChange}
             />
+            <button onClick={() => login()}>Sign in with Google 🚀 </button>;
           </div>
           {showAlert && <p>Wrong credentials! Try again...</p>}
           <button type="submit">Login</button>

@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import profilePicture from "../../assets/user-33638_640.webp";
-import "./users.css";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { User } from "../../redux/actions";
+import axios from "axios";
+import "./users.css";
 
 interface UsersProps {
   users: User[];

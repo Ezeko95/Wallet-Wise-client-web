@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import profilePicture from "../../assets/user-33638_640.webp";
 import axios from "axios";
 import { User } from "../../redux/actions";
-import "./detail.css"
+import "./Detail.css"
 
 const Detail = () => {
   const { id } = useParams<{ id: string }>();
