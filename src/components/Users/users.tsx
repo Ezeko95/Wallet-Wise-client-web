@@ -40,8 +40,8 @@ const Users = ({ users }: UsersProps) => {
 
   return (
     <div>
-      {user &&
-        user.map((user) => (
+      {users &&
+        users.map((user) => (
           <div key={user.id} className="users">
             <div className="user-info">
               <img src={profilePicture} alt="user" height="20px" />

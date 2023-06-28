@@ -1,20 +1,22 @@
 import Pagination from "../../components/Pagination/pagination";
-import Users from "../../components/Users/users";
-import { useEffect, useState } from "react";
+import profilePicture from "../../assets/user-33638_640.webp"
 import { useDispatch, useSelector} from "react-redux";
-import { RootState } from "../../redux/store/index";
 import { fetchUsers } from "../../redux/actions/index";
+import { RootState } from "../../redux/store/index";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "./Home.css";
 
 export const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const users = useSelector((state: RootState) => state.users.users);
+  const usersRedux = useSelector((state: RootState) => state.users.users);
   const loading = useSelector((state: RootState) => state.users.loading);
-  const error = useSelector((state: RootState) => state.users.error);
+  const [users, setUsers] = useState(usersRedux);
+  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [filteredUsers, setFilteredUsers] = useState(users);
   const itemsPerPage = 8;
 
   const handleLogout = () => {
@@ -25,54 +27,85 @@ export const Home = () => {
     dispatch(fetchUsers() as any);
   }, []);
 
+  useEffect(() => {
+    setUsers(usersRedux);
+    setCurrentPage(1);
+  }, [usersRedux]);
+
   if (loading) {
     return <p>Loading...</p>;
   }
 
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
+  const handleUserClick = (userId: number) => {
+    navigate(`/detail/${userId}`);
+  };
 
-// SEARCH BAR
-const handleSearchInputChange = (
-  event: React.ChangeEvent<HTMLInputElement>
-) => {
-  setSearchQuery(event.target.value);
-};
+  const togglePremium = async (userId: number) => {
+    try {
+      await axios.put(`user/${userId}`);
+    } catch (error) {
+      console.error("Error updating premium status:", error);
+    }
+  };
+  // search
+  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value;
+    setSearchQuery(query);
 
-// Filter the users based on the search query
-const filteredUsers = users.filter((user) =>
-  user.name.toLowerCase().includes(searchQuery.toLowerCase())
-);
+    const filtered = users.filter(
+      (user) =>
+        user.name.toLowerCase().includes(query.toLowerCase()) ||
+        user.id.toString().includes(query)
+    );
+    setFilteredUsers(filtered);
+    setCurrentPage(1);
+  };
 
-// PAGINADO
-const startIndex = (currentPage - 1) * itemsPerPage;
-const endIndex = startIndex + itemsPerPage;
-const paginatedUsers = filteredUsers.slice(startIndex, endIndex);
+  // Pagination
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedUsers = users.slice(startIndex, endIndex);
 
-const handlePageChange = (pageNumber: number) => {
-  setCurrentPage(pageNumber);
-};
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div className="home-container">
       <div className="navbar">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={handleSearchInputChange}
-            placeholder="Search by name..."
-            className="search-input"
-            />
+        <input
+          type="text"
+          placeholder="Search by name..."
+           onChange={handleSearchInputChange}
+          className="search-input"
+        />
         <button onClick={handleLogout}>Logout</button>
-            </div>
-      <div className="user-container">
+      </div>
         <Pagination
           currentPage={currentPage}
-          totalPages={Math.ceil(filteredUsers.length / itemsPerPage)}
+          totalPages={Math.ceil(users.length / itemsPerPage)}
           onPageChange={handlePageChange}
         />
-        <Users users={paginatedUsers} />
+      <div>
+        {paginatedUsers.map((user) => (
+          <div key={user.id} className="users">
+            <div className="user-info">
+              <img src={profilePicture} alt="user" height="40px" />
+              <p>{user.id}</p>
+              <p>{user.name}</p>
+              <p>{user.email}</p>
+              <p>{user.premium ? "Premium" : "Not Premium"}</p>
+            </div>
+            <div className="button-container">
+              <button onClick={() => togglePremium(user.id)}>
+                Toggle Premium
+              </button>
+              <button onClick={() => handleUserClick(user.id)}>
+                View Details
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
