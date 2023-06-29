@@ -9,6 +9,7 @@ const Detail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [users, setUsers] = useState<User | null>(null)
+
   useEffect(() => {
     const fetchUserDetail = async () => {
       try {
@@ -42,13 +43,12 @@ const Detail = () => {
         <p>Email: {users.email}</p>
         <p>Premium: {users.premium ? "Premium" : "Not Premium"}</p>
         <p>Fecha de creacion de usuario: {users.createdAt}</p>
-        {/* {users.balance && (
+        {users.balance && (
           <div>
             <h3>Balance</h3>
             <p>Total: {users.balance.total}</p>
-            {/* Display other balance properties as needed 
           </div>
-        )} */}
+        )}
       </div>
     </div>
   );

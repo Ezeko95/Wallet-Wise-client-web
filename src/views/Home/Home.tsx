@@ -1,6 +1,6 @@
 import Pagination from "../../components/Pagination/pagination";
-import profilePicture from "../../assets/user-33638_640.webp"
-import { useDispatch, useSelector} from "react-redux";
+import profilePicture from "../../assets/user-33638_640.webp";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../redux/actions/index";
 import { RootState } from "../../redux/store/index";
 import { useNavigate } from "react-router-dom";
@@ -16,21 +16,22 @@ export const Home = () => {
   const [users, setUsers] = useState(usersRedux);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredUsers, setFilteredUsers] = useState(usersRedux);
   const itemsPerPage = 8;
+
+  console.log(searchQuery)
 
   const handleLogout = () => {
     navigate("/");
   };
 
   useEffect(() => {
-    dispatch(fetchUsers() as any);
+      dispatch(fetchUsers() as any)
   }, []);
 
   useEffect(() => {
     setUsers(usersRedux);
     setCurrentPage(1);
-  }, [usersRedux]);
+  }, [usersRedux, ]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -56,16 +57,18 @@ export const Home = () => {
       console.error("Error updating premium status:", error);
     }
   };
-  
+
   // search
-  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const query = event.target.value;
     setSearchQuery(query);
-  
+
     const filtered = users.filter((user) =>
       user.name.toLowerCase().includes(query.toLowerCase())
     );
-    setFilteredUsers(filtered);
+    setUsers(filtered);
   };
 
   // Pagination
@@ -83,16 +86,16 @@ export const Home = () => {
         <input
           type="text"
           placeholder="Search by name..."
-           onChange={handleSearchInputChange}
+          onChange={handleSearchInputChange}
           className="search-input"
         />
         <button onClick={handleLogout}>Logout</button>
       </div>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={Math.ceil(users.length / itemsPerPage)}
-          onPageChange={handlePageChange}
-        />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(users.length / itemsPerPage)}
+        onPageChange={handlePageChange}
+      />
       <div>
         {paginatedUsers.map((user) => (
           <div key={user.id} className="users">

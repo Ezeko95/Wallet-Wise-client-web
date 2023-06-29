@@ -5,33 +5,8 @@ import { useState } from "react";
 import axios from "axios";
 import "./users.css";
 
-interface UsersProps {
-  users: User[];
-}
-
-const Users = ({ users }: UsersProps) => {
-  const [user, setUser] = useState(users)
-  console.log(user)
+const Users = () => {
   const navigate = useNavigate();
-
-
-  const togglePremium = async (userId: number) => {
-    try {
-      const updatedUsers = user.map((user: any) => {
-        if (user.id === userId) {
-          return { ...user, premium: !user.premium };
-        }
-        return user;
-      });
-
-      setUser(updatedUsers);
-
-      await axios.put(`user/${userId}`);
-      console.log("Premium status updated successfully!");
-    } catch (error) {
-      console.error("Error updating premium status:", error);
-    }
-  };
 
   const handleUserClick = (userId: number) => {
     navigate(`/detail/${userId}`);
