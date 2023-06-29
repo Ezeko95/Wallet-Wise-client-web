@@ -40,13 +40,23 @@ export const Home = () => {
     navigate(`/detail/${userId}`);
   };
 
+  // toggle premium
   const togglePremium = async (userId: number) => {
     try {
+      const updatedUsers = users.map((user: any) => {
+        if (user.id === userId) {
+          return { ...user, premium: !user.premium };
+        }
+        return user;
+      });
+      setUsers(updatedUsers);
       await axios.put(`user/${userId}`);
+      console.log("Premium status updated successfully!");
     } catch (error) {
       console.error("Error updating premium status:", error);
     }
   };
+  
   // search
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;

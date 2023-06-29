@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Landing, Home, Detail, Subscription } from "./views";
+import { Landing, Home, Detail } from "./views";
 
 const App = () => {
   return (
@@ -11,7 +11,6 @@ const App = () => {
 
         <Route path="/detail/:id" element={<Detail />} />
 
-        <Route path="/subscription" element={<Subscription />} />
       </Routes>
     </div>
   );

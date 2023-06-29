@@ -22,14 +22,13 @@ export const Landing: React.FC = () => {
       setShowAlert(false);
     }
   };
-  
+
   const login = useGoogleLogin({
     onSuccess: () => {
       navigate("/home");
     },
     flow: "auth-code",
   });
- 
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -60,6 +59,7 @@ export const Landing: React.FC = () => {
             <input
               type="text"
               value={form.email}
+              className="input-text"
               name="email"
               onChange={handleInputChange}
             />
@@ -69,14 +69,15 @@ export const Landing: React.FC = () => {
             <input
               type="password"
               value={form.password}
+              className="input-text"
               name="password"
               onChange={handleInputChange}
             />
-            <button onClick={() => login()}>Sign in with Google 🚀 </button>;
           </div>
           {showAlert && <p>Wrong credentials! Try again...</p>}
           <button type="submit">Login</button>
         </form>
+        <button onClick={() => login()}>Sign in with Google 🚀</button>
       </div>
     </>
   );

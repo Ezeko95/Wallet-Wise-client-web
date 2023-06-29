@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import profilePicture from "../../assets/user-33638_640.webp";
 import axios from "axios";
 import { User } from "../../redux/actions";
@@ -7,7 +7,7 @@ import "./Detail.css"
 
 const Detail = () => {
   const { id } = useParams<{ id: string }>();
-
+  const navigate = useNavigate();
   const [users, setUsers] = useState<User | null>(null)
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -27,8 +27,13 @@ const Detail = () => {
     return <p>Loading user data...</p>;
   }
 
+  const handleClick = () => {
+    navigate("/home")
+  }
+
   return (
     <div>
+      <button onClick={handleClick}>Back</button>
       <div className="detail-container">
         <img src={profilePicture} alt="user" height="200px" />
         <h2>User Detail</h2>

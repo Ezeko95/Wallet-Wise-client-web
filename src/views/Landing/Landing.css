@@ -5,7 +5,9 @@
   max-width: 300px;
   margin-left: 30%;
 }
-
+.input-text {
+  text-align: center;
+}
 .form-container {
   display: flex;
 }
