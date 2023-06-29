@@ -16,7 +16,7 @@ export const Home = () => {
   const [users, setUsers] = useState(usersRedux);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredUsers, setFilteredUsers] = useState(users);
+  const [filteredUsers, setFilteredUsers] = useState(usersRedux);
   const itemsPerPage = 8;
 
   const handleLogout = () => {
@@ -61,14 +61,11 @@ export const Home = () => {
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
     setSearchQuery(query);
-
-    const filtered = users.filter(
-      (user) =>
-        user.name.toLowerCase().includes(query.toLowerCase()) ||
-        user.id.toString().includes(query)
+  
+    const filtered = users.filter((user) =>
+      user.name.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredUsers(filtered);
-    setCurrentPage(1);
   };
 
   // Pagination
