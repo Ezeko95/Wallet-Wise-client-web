@@ -18,12 +18,17 @@ export const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const itemsPerPage = 8;
 
+  ///////////////////////////////////////////////////
+  //  llegan los usuarios por redux y se guardan en usersRedux
+  //  Se guardan los usuarios en estado local users
+  //  paginatedUsers hace slice de users
+
   const handleLogout = () => {
     navigate("/");
   };
 
   useEffect(() => {
-      dispatch(fetchUsers() as any)
+    dispatch(fetchUsers() as any);
   }, []);
 
   useEffect(() => {
@@ -67,7 +72,8 @@ export const Home = () => {
     const filtered = users.filter((user) =>
       user.name.toLowerCase().includes(query.toLowerCase())
     );
-    // seteo users 
+    // seteo users
+    searchQuery.length > 0 ? setCurrentPage(1) : setCurrentPage(1);
     setUsers(filtered);
   };
 
@@ -96,7 +102,7 @@ export const Home = () => {
         totalPages={Math.ceil(users.length / itemsPerPage)}
         onPageChange={handlePageChange}
       />
-      <div>
+      <div className="user-container">
         {paginatedUsers.map((user) => (
           <div key={user.id} className="users">
             <div className="user-info">
@@ -107,6 +113,13 @@ export const Home = () => {
               <p>{user.premium ? "Premium" : "Not Premium"}</p>
             </div>
             <div className="button-container">
+              <div className="button-action">
+              <select>
+                <option value="ban">Ban user</option>
+                <option value="suspend">Suspend User</option>
+              </select>
+              <button>Apply</button>
+              </div>
               <button onClick={() => togglePremium(user.id)}>
                 Toggle Premium
               </button>

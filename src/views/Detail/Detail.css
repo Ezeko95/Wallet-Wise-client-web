@@ -1,25 +1,69 @@
-.all-container{
-    display: flex;
-    justify-content: center;
+.all-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.image{
-    width: 200px;
-    height: 300px;
+.all-container button {
+  display: flex;
+  width: 70px;
+  margin-bottom: 20px;
 }
 
 .detail-container {
-    display: flex;
-    justify-content:space-around;
-    background-color: grey;
-    flex-direction: column;
-    width: 500px;
-    height: 700px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 1300px;
 }
 
-.movement-container{
-    flex-direction: column;
-    display: flex;
-    justify-content:space-around;
-    background-color: rgb(255, 255, 255);
+.user-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(141, 138, 138);
+  border-radius: 20px;
 }
+
+.image {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.total-balance {
+  background-color: rgba(56, 129, 60, 0.555);
+  width: 100%;
+  border-radius: 20px;
+}
+
+.expense-income {
+  display: flex;
+  margin-left: 10px;
+  gap: 20px;
+}
+
+.expense-container {
+  flex-direction: column;
+  display: flex;
+  width: 300px;
+  background-color: rgb(172, 117, 117);
+  flex-wrap: wrap;
+  border-radius: 20px;
+}
+
+.income-container {
+  flex-direction: column;
+  display: flex;
+  width: 300px;
+  background-color: rgb(97, 129, 165);
+  border-radius: 20px;
+}
+.income-container h1 {
+  border-bottom: solid 10px #865050;
+  padding-bottom: 20px;
+}
+.expense-container h1 {
+    border-bottom: solid 10px #4d82bc;
+    padding-bottom: 20px;
+  }
