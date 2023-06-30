@@ -1,5 +1,25 @@
+.all-container{
+    display: flex;
+    justify-content: center;
+}
+
+.image{
+    width: 200px;
+    height: 300px;
+}
+
 .detail-container {
+    display: flex;
+    justify-content:space-around;
     background-color: grey;
-    width: 1300px;
+    flex-direction: column;
+    width: 500px;
     height: 700px;
+}
+
+.movement-container{
+    flex-direction: column;
+    display: flex;
+    justify-content:space-around;
+    background-color: rgb(255, 255, 255);
 }

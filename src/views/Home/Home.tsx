@@ -18,8 +18,6 @@ export const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const itemsPerPage = 8;
 
-  console.log(searchQuery)
-
   const handleLogout = () => {
     navigate("/");
   };
@@ -31,7 +29,7 @@ export const Home = () => {
   useEffect(() => {
     setUsers(usersRedux);
     setCurrentPage(1);
-  }, [usersRedux, ]);
+  }, [usersRedux]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -62,12 +60,14 @@ export const Home = () => {
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    // guardo la busqueda en un estado
     const query = event.target.value;
     setSearchQuery(query);
-
+    // filtro el estado local users
     const filtered = users.filter((user) =>
       user.name.toLowerCase().includes(query.toLowerCase())
     );
+    // seteo users 
     setUsers(filtered);
   };
 
