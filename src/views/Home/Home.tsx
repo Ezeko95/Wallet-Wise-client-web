@@ -65,16 +65,19 @@ export const Home = () => {
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    // guardo la busqueda en un estado
-    const query = event.target.value;
+    const query = event.target.value.toLowerCase();
     setSearchQuery(query);
-    // filtro el estado local users
-    const filtered = users.filter((user) =>
-      user.name.toLowerCase().includes(query.toLowerCase())
-    );
-    // seteo users
-    searchQuery.length > 0 ? setCurrentPage(1) : setCurrentPage(1);
-    setUsers(filtered);
+
+    if (query.length === 0) {
+      setUsers(usersRedux);
+      setCurrentPage(1);
+    } else {
+      const filtered = usersRedux.filter((user) =>
+        user.name.toLowerCase().includes(query)
+      );
+      setUsers(filtered);
+      setCurrentPage(1);
+    }
   };
 
   // Pagination
@@ -114,11 +117,11 @@ export const Home = () => {
             </div>
             <div className="button-container">
               <div className="button-action">
-              <select>
-                <option value="ban">Ban user</option>
-                <option value="suspend">Suspend User</option>
-              </select>
-              <button>Apply</button>
+                <select>
+                  <option value="ban">Ban user</option>
+                  <option value="suspend">Suspend User</option>
+                </select>
+                <button>Apply</button>
               </div>
               <button onClick={() => togglePremium(user.id)}>
                 Toggle Premium
