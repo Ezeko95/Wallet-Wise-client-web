@@ -20,11 +20,11 @@
 .user-detail {
   display: flex;
   flex-direction: column;
+  padding: 30px;
   align-items: center;
   background-color: rgb(141, 138, 138);
   border-radius: 20px;
 }
-
 .image {
   display: flex;
   align-items: center;
@@ -34,6 +34,7 @@
 .total-balance {
   background-color: rgba(56, 129, 60, 0.555);
   width: 100%;
+  border-bottom: ;
   border-radius: 20px;
 }
 

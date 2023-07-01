@@ -56,8 +56,8 @@ export const Home = () => {
     }
   };
 
-  //
-  const toggleStatus = async (userId: number) => {
+  // ban user
+  const banUser = async (userId: number) => {
     try {
       const updatedUsers = users.map((user: any) => {
         if (user.id === userId) {
@@ -66,8 +66,27 @@ export const Home = () => {
         return user;
       });
       setUsers(updatedUsers);
-      await axios.put(`user/${userId}`);
+      await axios.put(`user/ban/${userId}`);
       console.log("User active status updated succesfully");
+    } catch (error) {
+      console.error("Error updating user active status:", error);
+    }
+  };
+
+  //
+  const suspendUser = async (userId: number) => {
+    try {
+      const updatedUsers = users.map((user: any) => {
+        if (user.id === userId) {
+          return { ...user, suspensionEndDate: !user.suspensionEndDate };
+        }
+        return user;
+      });
+      setUsers(updatedUsers);
+      const date = new Date();
+      date.setDate(date.getDate() + 1);
+      const response = await axios.put(`/user/suspend/${userId}`, { date });
+      console.log(response.data);
     } catch (error) {
       console.error("Error updating user active status:", error);
     }
@@ -131,23 +150,26 @@ export const Home = () => {
             </div>
             <div className="button-container">
               <div className="button-action">
-                <select>
+                <select className="select-with-color">
                   <option value="ban">Ban user</option>
                   <option value="suspend">Suspend User</option>
                 </select>
                 <button
+                className="ban-suspend-button"
                   onClick={() => {
                     const selectedOption =
                       document.querySelector("select").value;
-                    if (selectedOption === "suspend") {
-                      toggleStatus(user.id);
+                    if (selectedOption === "ban") {
+                      banUser(user.id);
+                    } else if (selectedOption === "suspend") {
+                      suspendUser(user.id);
                     }
                   }}
                 >
                   Apply
                 </button>
               </div>
-              <button onClick={() => togglePremium(user.id)}>
+              <button className="premium-button" onClick={() => togglePremium(user.id)}>
                 Toggle Premium
               </button>
               <button onClick={() => handleUserClick(user.id)}>

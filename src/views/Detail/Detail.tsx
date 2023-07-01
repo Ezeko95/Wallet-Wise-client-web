@@ -52,47 +52,53 @@ const Detail = () => {
       <button onClick={handleClick}>Back</button>
       <div className="detail-container">
         <div className="user-detail">
-        <img src={profilePicture} className="image" alt="user" height="200px" />
-        <h2>User Detail</h2>
-        <p>ID: {users.id}</p>
-        <p>Name: {users.name}</p>
-        <p>Email: {users.email}</p>
-        <p>Premium: {users.premium ? "Premium" : "Not Premium"}</p>
-        <p>Fecha de creacion de usuario: {users.createdAt}</p>
-        {users.balance && (
-          <div className="total-balance">
-            <h3>Balance</h3>
-            <p>Total: {users.balance.total}</p>
-          </div>
-        )}
+          <img
+            src={profilePicture}
+            className="image"
+            alt="user"
+            height="200px"
+          />
+          <h2>User Detail</h2>
+          <p>ID: {users.id}</p>
+          <p>Name: {users.name}</p>
+          <p>Email: {users.email}</p>
+          <p>State: {users.active ? "Active" : "Suspeded/Banned"}</p>
+          <p>Premium: {users.premium ? "Premium" : "Not Premium"}</p>
+          <p>Fecha de creacion de usuario: {users.createdAt}</p>
+          {users.balance && (
+            <div className="total-balance">
+              <h3>Balance</h3>
+              <p>Total: {users.balance.total}</p>
+            </div>
+          )}
         </div>
         <div className="expense-income">
-        <div className="expense-container">
-          <h1>User Expenses</h1>
-          {expense &&
-            expense.map((e, index) => {
-              return (
-                <div key={index}>
-                  <h3>
-                    {e.description}: - {e.amount}
-                  </h3>
-                </div>
-              );
-            })}
-        </div>
-        <div className="income-container">
-          <h1>User Incomes</h1>
-          {income &&
-            income.map((e, index) => {
-              return (
-                <div key={index}>
-                  <h3>
-                    {e.type}: + {e.amount}
-                  </h3>
-                </div>
-              );
-            })}
-        </div>
+          <div className="expense-container">
+            <h1>User Expenses</h1>
+            {expense &&
+              expense.map((e, index) => {
+                return (
+                  <div key={index}>
+                    <h3>
+                      {e.description}: - {e.amount}
+                    </h3>
+                  </div>
+                );
+              })}
+          </div>
+          <div className="income-container">
+            <h1>User Incomes</h1>
+            {income &&
+              income.map((e, index) => {
+                return (
+                  <div key={index}>
+                    <h3>
+                      {e.type}: + {e.amount}
+                    </h3>
+                  </div>
+                );
+              })}
+          </div>
         </div>
       </div>
     </div>

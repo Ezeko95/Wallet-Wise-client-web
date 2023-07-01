@@ -8,6 +8,7 @@ export interface User {
   picture: string;
   premium: boolean;
   active: boolean;
+  suspensionEndDate: Date;
   createdAt: string;
   updatedAt: string;
   balance: {
