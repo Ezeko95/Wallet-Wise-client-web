@@ -7,6 +7,7 @@ export interface User {
   email: string;
   picture: string;
   premium: boolean;
+  active: boolean;
   createdAt: string;
   updatedAt: string;
   balance: {
@@ -23,20 +24,20 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
   }
 });
 
-export const fetchUsersDetail = createAsyncThunk('users/fetchUsersDetail', async (id: number) => {
-  try {
-    const response = await axios.get<User[]>(`/user/${id}`);
-    return response.data;
-  } catch (error: any) {
-    throw new Error(error.message);
-  }
-});
+// export const fetchUsersDetail = createAsyncThunk('users/fetchUsersDetail', async (id: number) => {
+//   try {
+//     const response = await axios.get<User[]>(`/user/${id}`);
+//     return response.data;
+//   } catch (error: any) {
+//     throw new Error(error.message);
+//   }
+// });
 
-export const fetchUsersByName = createAsyncThunk('users/fetchUsersByName', async (name: string) => {
-  try {
-    const response = await axios.get<User[]>(`/user?${name}`);
-    return response.data;
-  } catch (error:any) {
-    throw new Error(error.message);
-  }
-});
+// export const fetchUsersByName = createAsyncThunk('users/fetchUsersByName', async (name: string) => {
+//   try {
+//     const response = await axios.get<User[]>(`/user?${name}`);
+//     return response.data;
+//   } catch (error:any) {
+//     throw new Error(error.message);
+//   }
+// });

@@ -18,11 +18,6 @@ export const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const itemsPerPage = 8;
 
-  ///////////////////////////////////////////////////
-  //  llegan los usuarios por redux y se guardan en usersRedux
-  //  Se guardan los usuarios en estado local users
-  //  paginatedUsers hace slice de users
-
   const handleLogout = () => {
     navigate("/");
   };
@@ -61,6 +56,23 @@ export const Home = () => {
     }
   };
 
+  //
+  const toggleStatus = async (userId: number) => {
+    try {
+      const updatedUsers = users.map((user: any) => {
+        if (user.id === userId) {
+          return { ...user, active: !user.active };
+        }
+        return user;
+      });
+      setUsers(updatedUsers);
+      await axios.put(`user/${userId}`);
+      console.log("User active status updated succesfully");
+    } catch (error) {
+      console.error("Error updating user active status:", error);
+    }
+  };
+
   // search
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -88,6 +100,7 @@ export const Home = () => {
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
+  if (searchQuery === "99221118822") console.log("what the fuck");
 
   return (
     <div className="home-container">
@@ -113,6 +126,7 @@ export const Home = () => {
               <p>{user.id}</p>
               <p>{user.name}</p>
               <p>{user.email}</p>
+              <p>{user.active ? "Active" : "Suspended/Banned"}</p>
               <p>{user.premium ? "Premium" : "Not Premium"}</p>
             </div>
             <div className="button-container">
@@ -121,7 +135,17 @@ export const Home = () => {
                   <option value="ban">Ban user</option>
                   <option value="suspend">Suspend User</option>
                 </select>
-                <button>Apply</button>
+                <button
+                  onClick={() => {
+                    const selectedOption =
+                      document.querySelector("select").value;
+                    if (selectedOption === "suspend") {
+                      toggleStatus(user.id);
+                    }
+                  }}
+                >
+                  Apply
+                </button>
               </div>
               <button onClick={() => togglePremium(user.id)}>
                 Toggle Premium
