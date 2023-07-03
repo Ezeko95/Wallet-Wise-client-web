@@ -21,6 +21,7 @@ export const Landing: React.FC = () => {
 
   const login = useGoogleLogin({
     onSuccess: () => {
+      setCookie("accessToken", "JzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IldhbGxldC1XaXNlLUFkbWluIiwiaWF0IjoxNTE2MjM5MDIyfQ.NNSJUFlZAWKIy3pE7gMcD66Oq6uqzVPj3AKCqW0fsUM");
       navigate("/home");
     },
     flow: "auth-code",
@@ -31,21 +32,20 @@ export const Landing: React.FC = () => {
     try {
       const response = await axios.post("/admin/login", {
         name: form.name,
-        password: form.password
+        password: form.password,
       });
-      console.log(response.data)
+      console.log(response.data);
       if (response.status === 500) {
-        setShowAlert(true)
+        setShowAlert(true);
       } else {
         navigate("/home");
         const accesToken = response.data.accessToken;
-        setCookie("accessToken", accesToken)
+        setCookie("accessToken", accesToken);
       }
     } catch (error) {
       console.error(error);
     }
   };
-  
 
   return (
     <>
