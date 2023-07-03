@@ -13,6 +13,7 @@ export const Landing: React.FC = () => {
     password: "",
   });
   const [showAlert, setShowAlert] = useState(false);
+  console.log(showAlert)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -34,21 +35,22 @@ export const Landing: React.FC = () => {
         name: form.name,
         password: form.password,
       });
-      console.log(response.data);
-      if (response.status === 500) {
-        setShowAlert(true);
-      } else {
+      console.log(response);
+      if (response.status === 200) {
         navigate("/home");
-        const accesToken = response.data.accessToken;
-        setCookie("accessToken", accesToken);
+        const accessToken = response.data.accessToken;
+        setCookie("accessToken", accessToken);
+      } else {
+        setShowAlert(true);
       }
     } catch (error) {
       console.error(error);
+      setShowAlert(true);
     }
   };
 
   return (
-    <>
+    <div className="landing-container">
       <div className="secret-code">
         <h1>"I solemnly swear that I am up to no good."</h1>
       </div>
@@ -82,6 +84,6 @@ export const Landing: React.FC = () => {
         </form>
         <button onClick={() => login()}>Sign in with Google 🚀</button>
       </div>
-    </>
+      </div>
   );
 };

@@ -16,7 +16,6 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
   const endIndex = startIndex + itemsPerPage;
   const paginatedUsers = users.slice(startIndex, endIndex);
   const totalPages = Math.ceil(users.length / itemsPerPage);
-
   // details
   const handleUserClick = (userId: number) => {
     navigate(`/detail/${userId}`);

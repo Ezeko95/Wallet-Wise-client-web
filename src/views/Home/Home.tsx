@@ -9,13 +9,12 @@ import { fetchUsers, User } from "../../redux/actions/index";
 export const Home = () => {
   const dispatch = useDispatch();
   const filteredUsers = useSelector((state: RootState) => state.users.filteredUsers) as User[];
-
   useEffect(() => {
     dispatch(fetchUsers() as any);
   }, []);
 
   return (
-    <div className="home-container">
+    <div>
       <Navbar></Navbar>
       <Users users={filteredUsers}></Users>
     </div>

@@ -1,9 +1,16 @@
 .login-container {
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
   max-width: 300px;
-  margin-left: 37%;
+  align-items: center;
+  justify-content: center;
+}
+.landing-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
 }
 .input-text {
   text-align: center;
@@ -41,12 +48,21 @@ input[type="password"] {
   margin-top: 10px;
 }
 
+@media (max-width: 600px) {
+  .login-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+  }
+}
 
 @keyframes secret-code-animation {
-    0%, 100% {
-      opacity: 0.10;
-    }
-    50% {
-      opacity: 0.75;
-    }
+  0%,
+  100% {
+    opacity: 0.1;
   }
+  50% {
+    opacity: 0.75;
+  }
+}

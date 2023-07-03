@@ -16,9 +16,13 @@ const NavBar = () => {
     removeCookie("accessToken");
     navigate("/")
   }
+  const handleAnalytics = () => {
+    navigate("/analytics")
+  }
 
   return (
     <div className="navbar">
+      <button onClick={handleAnalytics}>Analytics</button>
       <input type="text" onChange={handleSearchInputChange} placeholder="Search users by name" />
     <button onClick={handleLogOut}>Logout</button>
     </div>

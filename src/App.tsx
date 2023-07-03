@@ -5,7 +5,6 @@ import useAuth from "./components/Auth/Auth";
 const App = () => {
   useAuth();
   return (
-    <div>
       <Routes>
         <Route path="/" element={<Landing />} />
 
@@ -18,7 +17,6 @@ const App = () => {
         <Route path="*" element={<Navigate to="/" />} />
         
       </Routes>
-    </div>
   );
 };
 
