@@ -91,3 +91,42 @@
 .user-info p {
   max-width: 500px;
 }
+@media (max-width: 600px) {
+ 
+  .users{
+    width: 1300px;
+    display: flex;
+    
+  }
+  .user-info {
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    gap: 1rem;
+  }
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    margin-top: 10px;
+    margin-right: 10px;
+    gap: 20rem;
+  }
+  .button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .premium-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+  }
+  .detail-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+  }
+}

@@ -103,7 +103,7 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
             >
               Toggle Premium
             </button>
-            <button onClick={() => handleUserClick(user.id)}>
+            <button className="detail-button"onClick={() => handleUserClick(user.id)}>
               View Details
             </button>
           </div>
