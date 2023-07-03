@@ -1,13 +1,15 @@
 import lock from "../../assets/pngkit_padlock-icon-png_3331142.png";
+import { setCookie } from "typescript-cookie";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import axios from "axios";
 import "./Landing.css";
 
 export const Landing: React.FC = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    email: "",
+    name: "",
     password: "",
   });
   const [showAlert, setShowAlert] = useState(false);
@@ -15,12 +17,6 @@ export const Landing: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-
-    if (name === "email" && showAlert && value === "") {
-      setShowAlert(false);
-    } else if (name === "password" && showAlert && value === "") {
-      setShowAlert(false);
-    }
   };
 
   const login = useGoogleLogin({
@@ -30,25 +26,32 @@ export const Landing: React.FC = () => {
     flow: "auth-code",
   });
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Check if the entered credentials match the admin credentials
-    if (form.email === "Wallet-Wise-Admin" && form.password === "admin123") {
-      // Redirect to the home page
-      navigate("/home");
-    } else {
-      // Show an error message or perform other actions for invalid credentials
-      setShowAlert(true);
+    try {
+      const response = await axios.post("/admin/login", {
+        name: form.name,
+        password: form.password
+      });
+      console.log(response.data)
+      if (response.status === 500) {
+        setShowAlert(true)
+      } else {
+        navigate("/home");
+        const accesToken = response.data.accessToken;
+        setCookie("accessToken", accesToken)
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
+  
 
   return (
     <>
       <div className="secret-code">
         <h1>"I solemnly swear that I am up to no good."</h1>
       </div>
-
       <div className="login-container">
         <div className="lock">
           <img src={lock} alt="lock" height="70px"></img>
@@ -58,9 +61,9 @@ export const Landing: React.FC = () => {
             <label>User: </label>
             <input
               type="text"
-              value={form.email}
+              value={form.name}
               className="input-text"
-              name="email"
+              name="name"
               onChange={handleInputChange}
             />
           </div>

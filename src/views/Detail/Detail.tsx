@@ -65,6 +65,7 @@ const Detail = () => {
           <p>State: {users.active ? "Active" : "Suspeded/Banned"}</p>
           <p>Premium: {users.premium ? "Premium" : "Not Premium"}</p>
           <p>Fecha de creacion de usuario: {users.createdAt}</p>
+          <p>Ultima actividad: {users.updatedAt}</p>
           {users.balance && (
             <div className="total-balance">
               <h3>Balance</h3>

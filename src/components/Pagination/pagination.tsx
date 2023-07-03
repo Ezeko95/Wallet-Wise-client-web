@@ -1,5 +1,4 @@
 import React from "react";
-import "./pagination.css"
 
 interface PaginationProps {
   currentPage: number;
@@ -8,23 +7,27 @@ interface PaginationProps {
 }
 
 const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
-  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+  const handlePageChange = (pageNumber: number) => {
+    if (pageNumber > 0 && pageNumber <= totalPages) {
+      onPageChange(pageNumber);
+    }
+  };
 
   return (
     <div className="pagination">
-      <button onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
+      <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}>
         Previous
       </button>
-      {pageNumbers.map((pageNumber) => (
+      {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
         <button
           key={pageNumber}
-          onClick={() => onPageChange(pageNumber)}
-          disabled={pageNumber === currentPage}
+          onClick={() => handlePageChange(pageNumber)}
+          disabled={currentPage === pageNumber}
         >
           {pageNumber}
         </button>
       ))}
-      <button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+      <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)}>
         Next
       </button>
     </div>
@@ -32,5 +35,3 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
 };
 
 export default Pagination;
-
-

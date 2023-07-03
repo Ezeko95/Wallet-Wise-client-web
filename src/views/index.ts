@@ -4,4 +4,6 @@ import Home from "./Home/Home";
 
 import Detail from "./Detail/Detail";
 
-export {Detail, Home, Landing};
+import Analytics from "./Analytics/Analytics";
+
+export {Detail, Home, Landing, Analytics};
