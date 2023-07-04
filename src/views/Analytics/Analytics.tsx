@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BarChar from '../../components/Charts/BarChar';
 import PieChar from '../../components/Charts/PieChart';
 import LineChar from '../../components/Charts/LineChar';
 import './analytics.css';
 
+
 const Analytics: React.FC = () => {
+  const navigate = useNavigate()
   const [selectedChart, setSelectedChart] = useState('');
 
   const handleButtonClick = (chartType: string) => {
     setSelectedChart(chartType);
   };
 
+  const handleClick = () => {
+    navigate("/home")
+  }
+
   return (
     <div className="analytics-container">
+      <div>
+        <button style={{marginBottom:"20px"}} onClick={handleClick}>Back</button>
+      </div>
       <div className="action-buttons">
         <button
           style={{ backgroundColor: "#05668D" }}
