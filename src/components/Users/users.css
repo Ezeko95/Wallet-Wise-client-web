@@ -27,7 +27,7 @@
   justify-content: space-between;
   margin-bottom: 1rem;
   width: 1600px;
-  background-color: grey;
+  background-color: #05668D;
   padding: 8px;
   margin-top: 20px;
   border-radius: 10px;
@@ -85,7 +85,7 @@
 }
 
 .premium-button {
-  background-color: rgb(161, 161, 98);
+  background-color: #8F7E4F;
 }
 
 .user-info p {
