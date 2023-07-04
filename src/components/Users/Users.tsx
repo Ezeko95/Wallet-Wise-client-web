@@ -41,7 +41,8 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
     } catch (error) {
       console.error("Error updating user active status:", error);
     }
-  };
+  }; 
+  
 
   // suspend user
   const suspendUser = async (userId: number) => {

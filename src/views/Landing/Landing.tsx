@@ -52,7 +52,7 @@ export const Landing: React.FC = () => {
   return (
     <div className="landing-container">
       <div className="secret-code">
-        <h1>"I solemnly swear that I am up to no good."</h1>
+        <h1>Wallet Wise Admin</h1>
       </div>
       <div className="login-container">
         <div className="lock">
