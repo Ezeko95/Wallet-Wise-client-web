@@ -12,7 +12,7 @@ const Analytics: React.FC = () => {
   };
 
   return (
-    <div className="charts-container">
+    <div className="analytics-container">
       <div className="action-buttons">
         <button
           style={{ backgroundColor: "#05668D" }}
