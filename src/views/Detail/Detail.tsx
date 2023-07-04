@@ -1,13 +1,16 @@
+import "./Detail.css";
+import axios from "axios";
+import Lottie from "lottie-react";
+import { User } from "../../redux/actions";
+import loading from "../../assets/loading.json"
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import profilePicture from "../../assets/user-33638_640.webp";
-import axios from "axios";
-import { User } from "../../redux/actions";
-import "./Detail.css";
 
 const Detail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
   const [expense, setExpense] = useState([]);
   const [income, setIncome] = useState([]);
   const [users, setUsers] = useState<User | null>(null);
@@ -37,17 +40,20 @@ const Detail = () => {
       }
     };
     fetchUserDetail();
+    setTimeout(() => {
+      setIsLoading(false);
+    },1500)
   }, [id]);
-
-  if (users === null) {
-    return <p>Loading user data...</p>;
-  }
 
   const handleClick = () => {
     navigate("/home");
   };
 
   return (
+    <div>
+      {isLoading ? (
+        <Lottie animationData={loading} />
+        ) : (
     <div className="all-container">
       <button onClick={handleClick}>Back</button>
       <div className="detail-container">
@@ -102,6 +108,8 @@ const Detail = () => {
           </div>
         </div>
       </div>
+    </div>
+    )}
     </div>
   );
 };

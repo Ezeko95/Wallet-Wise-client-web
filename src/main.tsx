@@ -7,8 +7,8 @@ import App from "./App.tsx";
 import axios from "axios";
 import "./index.css";
 
-// axios.defaults.baseURL = "http://localhost:3003/";
-axios.defaults.baseURL = 'https://wallet-wise.onrender.com/'
+// axios.defaults.baseURL = "http://localhost:3001/";
+axios.defaults.baseURL = "https://wallet-wise.onrender.com/";
 
 const clientId =
   "988115114562-fl3kcesngj8rr7f9iekttr55mjdsndfe.apps.googleusercontent.com";
