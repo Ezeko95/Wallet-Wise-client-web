@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BarChar from '../../components/Charts/BarChar';
 import PieChar from '../../components/Charts/PieChart';
-import LineChar from '../../components/Charts/LineChar';
+// import LineChar from '../../components/Charts/LineChar';
 import './analytics.css';
 
 
@@ -36,17 +36,17 @@ const Analytics: React.FC = () => {
         >
           Pie Chart
         </button>
-        <button
+        {/* <button
           style={{ backgroundColor: "#524632" }}
           onClick={() => handleButtonClick('line')}
         >
           Other Chart
-        </button>
+        </button> */}
       </div>
       <div className="chart-container">
         {selectedChart === 'bar' && <BarChar />}
         {selectedChart === 'pie' && <PieChar />}
-        {selectedChart === 'line' && <LineChar />}
+        {/* {selectedChart === 'line' && <LineChar />} */}
       </div>
     </div>
   );

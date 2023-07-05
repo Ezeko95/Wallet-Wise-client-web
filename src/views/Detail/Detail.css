@@ -22,7 +22,7 @@
   flex-direction: column;
   padding: 30px;
   align-items: center;
-  background-color: rgb(141, 138, 138);
+  background-color:#524632;
   border-radius: 20px;
 }
 .image {
@@ -32,8 +32,9 @@
 }
 
 .total-balance {
-  background-color: rgba(56, 129, 60, 0.555);
+  background-color:#F5E9E2;
   width: 100%;
+  color: black;
   border-radius: 20px;
 }
 
@@ -47,7 +48,7 @@
   flex-direction: column;
   display: flex;
   width: 300px;
-  background-color: rgb(172, 117, 117);
+  background-color:#05668D;
   flex-wrap: wrap;
   border-radius: 20px;
 }
@@ -56,14 +57,14 @@
   flex-direction: column;
   display: flex;
   width: 300px;
-  background-color: rgb(97, 129, 165);
+  background-color:#4A726E;
   border-radius: 20px;
 }
 .income-container h1 {
-  border-bottom: solid 10px #865050;
+  border-bottom: solid 10px #05668D;
   padding-bottom: 20px;
 }
 .expense-container h1 {
-    border-bottom: solid 10px #4d82bc;
+    border-bottom: solid 10px #4A726E;
     padding-bottom: 20px;
   }

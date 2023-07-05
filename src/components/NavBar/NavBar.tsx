@@ -8,6 +8,7 @@ import { removeCookie } from "typescript-cookie";
 const NavBar = () => {
     const navigate = useNavigate()
   const dispatch = useDispatch();
+  
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchQuery = event.target.value;
     dispatch(filterUsers(searchQuery));
