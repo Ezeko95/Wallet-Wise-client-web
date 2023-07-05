@@ -73,7 +73,7 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
       {paginatedUsers.map((user) => (
         <div key={user.id} className="users">
           <div className="user-info">
-            <img src={profilePicture} alt="user" height="40px" />
+            <img src={user.picture} alt="user" height="40px" />
             <p>{user.id}</p>
             <p>{user.name}</p>
             <p>{user.email}</p>
