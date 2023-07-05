@@ -59,7 +59,7 @@ const Detail = () => {
       <div className="detail-container">
         <div className="user-detail">
           <img
-            src={profilePicture}
+            src={user.picture}
             className="image"
             alt="user"
             height="200px"
