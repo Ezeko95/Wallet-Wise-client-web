@@ -1,4 +1,3 @@
-import profilePicture from "../../assets/user-33638_640.webp";
 import Pagination from "../Pagination/pagination";
 import { User } from "../../redux/actions/index";
 import { useNavigate } from "react-router-dom";

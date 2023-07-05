@@ -5,7 +5,6 @@ import { User } from "../../redux/actions";
 import loading from "../../assets/loading.json"
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import profilePicture from "../../assets/user-33638_640.webp";
 
 const Detail = () => {
   const { id } = useParams<{ id: string }>();
@@ -59,7 +58,7 @@ const Detail = () => {
       <div className="detail-container">
         <div className="user-detail">
           <img
-            src={user.picture}
+            src={users.picture}
             className="image"
             alt="user"
             height="200px"
