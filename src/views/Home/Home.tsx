@@ -17,7 +17,7 @@ export const Home = () => {
     dispatch(fetchUsers() as any).then(() => {
       setTimeout(() => {
         setIsLoading(false);
-      }, 1500);
+      }, 900);
     });
   }, []);
   

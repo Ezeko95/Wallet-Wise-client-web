@@ -41,7 +41,7 @@ const Detail = () => {
     fetchUserDetail();
     setTimeout(() => {
       setIsLoading(false);
-    },1500)
+    },1000)
   }, [id]);
 
   const handleClick = () => {
