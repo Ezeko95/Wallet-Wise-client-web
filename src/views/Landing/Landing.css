@@ -46,6 +46,9 @@ input[type="password"] {
 
 .login-container button {
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 600px) {

@@ -13,7 +13,7 @@ export const Landing: React.FC = () => {
     password: "",
   });
   const [showAlert, setShowAlert] = useState(false);
-  console.log(showAlert)
+  console.log(showAlert);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -22,7 +22,10 @@ export const Landing: React.FC = () => {
 
   const login = useGoogleLogin({
     onSuccess: () => {
-      setCookie("accessToken", "JzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IldhbGxldC1XaXNlLUFkbWluIiwiaWF0IjoxNTE2MjM5MDIyfQ.NNSJUFlZAWKIy3pE7gMcD66Oq6uqzVPj3AKCqW0fsUM");
+      setCookie(
+        "accessToken",
+        "JzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IldhbGxldC1XaXNlLUFkbWluIiwiaWF0IjoxNTE2MjM5MDIyfQ.NNSJUFlZAWKIy3pE7gMcD66Oq6uqzVPj3AKCqW0fsUM"
+      );
       navigate("/home");
     },
     flow: "auth-code",
@@ -52,7 +55,7 @@ export const Landing: React.FC = () => {
   return (
     <div className="landing-container">
       <div className="secret-code">
-        <h1>Wallet Wise Admin</h1>
+        <h1>Wise Wallet Admin</h1>
       </div>
       <div className="login-container">
         <div className="lock">
@@ -80,10 +83,10 @@ export const Landing: React.FC = () => {
             />
           </div>
           {showAlert && <p>Wrong credentials! Try again...</p>}
-          <button type="submit">Login</button>
         </form>
+        <button type="submit">Login</button>
         <button onClick={() => login()}>Sign in with Google 🚀</button>
       </div>
-      </div>
+    </div>
   );
 };

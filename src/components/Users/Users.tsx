@@ -86,7 +86,6 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
                 <option value="suspend">Suspend User</option>
               </select>
               <button
-                className="ban-suspend-button"
                 onClick={() => {
                   const selectedOption = document.querySelector("select").value;
                   if (selectedOption === "ban") {
@@ -100,12 +99,11 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
               </button>
             </div>
             <button
-              className="premium-button"
               onClick={() => togglePremium(user.id)}
             >
               Toggle Premium
             </button>
-            <button className="detail-button"onClick={() => handleUserClick(user.id)}>
+            <button onClick={() => handleUserClick(user.id)}>
               View Details
             </button>
           </div>
