@@ -33,6 +33,7 @@ const NavBar = () => {
         type="text"
         onChange={handleSearchInputChange}
         placeholder="Search users by name"
+        style={{width: 190}}
       />
       <button onClick={handleLogOut}>Logout</button>
     </div>
