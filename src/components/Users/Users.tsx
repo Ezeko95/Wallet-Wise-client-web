@@ -1,9 +1,9 @@
-import Pagination from "../Pagination/pagination";
-import { User } from "../../redux/actions/index";
-import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import axios from "axios";
-import "./users.css";
+import Pagination from '../Pagination/pagination';
+import { User } from '../../redux/actions/index';
+import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import axios from 'axios';
+import './users.css';
 
 const Users: React.FC<{ users: User[] }> = ({ users }) => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
   const endIndex = startIndex + itemsPerPage;
   const paginatedUsers = users.slice(startIndex, endIndex);
   const totalPages = Math.ceil(users.length / itemsPerPage);
-  
+
   // details
   const handleUserClick = (userId: number) => {
     navigate(`/detail/${userId}`);
@@ -28,7 +28,7 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
       alert(`User with id ${userId} has been upgraded to premium!`);
       window.location.reload();
     } catch (error) {
-      console.error("Error updating premium status:", error);
+      console.error('Error updating premium status:', error);
     }
   };
 
@@ -39,10 +39,9 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
       alert(`User with id ${userId} has been banned`);
       window.location.reload();
     } catch (error) {
-      console.error("Error updating user active status:", error);
+      console.error('Error updating user active status:', error);
     }
-  }; 
-  
+  };
 
   // suspend user
   const suspendUser = async (userId: number) => {
@@ -53,14 +52,13 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
       alert(`User with id ${userId}  has been suspended temporarly`);
       window.location.reload();
     } catch (error) {
-      console.error("Error updating user active status:", error);
+      console.error('Error updating user active status:', error);
     }
   };
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
-
 
   return (
     <div className="user-container">
@@ -76,8 +74,8 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
             <p>{user.id}</p>
             <p>{user.name}</p>
             <p>{user.email}</p>
-            <p>{user.active ? "Active" : "Suspended/Banned"}</p>
-            <p>{user.premium ? "Premium" : "Not Premium"}</p>
+            <p>{user.active ? 'Active' : 'Suspended/Banned'}</p>
+            <p>{user.premium ? 'Premium' : 'Not Premium'}</p>
           </div>
           <div className="button-container">
             <div className="button-action">
@@ -86,11 +84,12 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
                 <option value="suspend">Suspend User</option>
               </select>
               <button
+                className="homeButton"
                 onClick={() => {
-                  const selectedOption = document.querySelector("select").value;
-                  if (selectedOption === "ban") {
+                  const selectedOption = document.querySelector('select').value;
+                  if (selectedOption === 'ban') {
                     banUser(user.id);
-                  } else if (selectedOption === "suspend") {
+                  } else if (selectedOption === 'suspend') {
                     suspendUser(user.id);
                   }
                 }}
@@ -99,11 +98,15 @@ const Users: React.FC<{ users: User[] }> = ({ users }) => {
               </button>
             </div>
             <button
+              className="homeButton"
               onClick={() => togglePremium(user.id)}
             >
               Toggle Premium
             </button>
-            <button onClick={() => handleUserClick(user.id)}>
+            <button
+              className="homeButton"
+              onClick={() => handleUserClick(user.id)}
+            >
               View Details
             </button>
           </div>

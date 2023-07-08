@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap');
+
 .login-container {
   display: flex;
   flex-direction: column;
@@ -21,9 +23,11 @@
 .secret-code {
   display: flex;
   justify-content: center;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   opacity: 0;
   animation: secret-code-animation 7s infinite;
+  font-family: 'Monomaniac One', sans-serif;
+  font-size: 25px
 }
 
 .lock {
@@ -40,12 +44,12 @@ input[type="password"] {
   padding: 8px 15px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid #ffffff;
   box-sizing: border-box;
 }
 
 .login-container button {
-  margin-top: 10px;
+  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +60,7 @@ input[type="password"] {
     display: flex;
     justify-content: center;
     width: 100%;
-    padding: 10px;
+    padding: 15px;
   }
 }
 

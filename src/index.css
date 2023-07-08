@@ -4,7 +4,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #180042;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -38,10 +38,10 @@ h1 {
 button {
   align-items: center;
   background-color: #fee6e3;
-  border: 2px solid grey;
+  border: 2px solid rgb(9, 0, 106);
   border-radius: 8px;
   box-sizing: border-box;
-  color: grey;
+  color: rgb(0, 0, 0);
   cursor: pointer;
   display: flex;
   font-family: Inter,sans-serif;
@@ -60,7 +60,7 @@ button {
 }
 
 button:after {
-  background-color: rgb(156, 160, 102);
+  background-color: rgb(184, 209, 242);
   border-radius: 8px;
   content: "";
   display: block;
